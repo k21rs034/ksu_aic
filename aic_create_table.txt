@@ -1,0 +1,69 @@
+
+CREATE TABLE tbl_facility(
+    id SERIAL PRIMARY KEY,
+    fname VARCHAR(64) NOT NULL,
+    fshortname VARCHAR(16) NOT NULL,
+    maker VARCHAR(64),
+    iyear DATE,
+    splace VARCHAR(16),
+    purpose TEXT,
+    note TEXT
+);
+
+
+CREATE TABLE tbl_sample(
+    id SERIAL PRIMARY KEY,
+    saname VARCHAR(32) NOT NULL,
+    sastate INT,
+    sachara VARCHAR(16)
+);
+
+CREATE TABLE tbl_user(
+    uid VARCHAR(14) PRIMARY KEY,
+    urole INT NOT NULL,
+    uname VARCHAR(16) NOT NULL,
+    upass VARCHAR(32)
+);
+
+CREATE TABLE tbl_fd(
+    fdid VARCHAR(6) PRIMARY KEY,
+    faculty VARCHAR(16) NOT NULL,
+    fdname VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE tbl_teacher(
+    tid VARCHAR(14) PRIMARY KEY,
+    uid VARCHAR(14) NOT NULL,
+    fdid VARCHAR(6) NOT NULL,
+    name VARCHAR(16) NOT NULL,
+    sex INT,
+    tel VARCHAR(26),
+    trole INT,
+    room VARCHAR(16),
+    sfield VARCHAR(64)
+);
+
+CREATE TABLE tbl_student(
+    stid CHAR(7) PRIMARY KEY,
+    uid VARCHAR(14) NOT NULL,
+    fdid VARCHAR(6) NOT NULL,
+    name VARCHAR(16) NOT NULL,
+    sex INT,
+    tel VARCHAR(26)
+);
+
+CREATE TABLE tbl_reserve(
+    id SERIAL NOT NULL,
+    facility_id INT NOT NULL,
+    sample_id INT NOT NULL,
+    uid VARCHAR(14) NOT NULL,
+    others TEXT,
+    reserved TIMESTAMP,
+    stime TIMESTAMP DEFAULT now(),
+    etime TIMESTAMP DEFAULT now(),
+    xraychk INT,
+    xraynum VARCHAR(32),
+    note TEXT,
+    decided INT,
+    purpose VARCHAR(16)
+);
