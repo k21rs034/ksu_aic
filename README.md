@@ -1,4 +1,4 @@
-# Test of PHP Functions and Classes
+# 総合機器センター予約システム
 1. 仕様
  - すべての機能や画面のソースファイルは、srcフォルダ以下に集約する。．
  - 各機能や画面の利用は、必ずindex.phpを通して行う。
